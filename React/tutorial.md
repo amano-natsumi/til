@@ -99,3 +99,18 @@ this.setState((state, props) => ({
   OR
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
+
+## 条件
+- && 
+false は無視される
+
+```
+return (
+  <div>
+    {unreadMessages.length > 0 && <div>hello</div>}
+  </div>
+);
+```
+
+− render でnullを返すと描写されない
+
