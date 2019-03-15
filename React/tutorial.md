@@ -5,7 +5,8 @@ const element = <div>hello</div>;
 ```
 
 ### 関数コンポーネント
-propsを引数にとりReact要素を返す  
+- propsを引数にとりReact要素を返す  
+- 大文字から始める  
 
 ```javascript
 function Welcome(props) {
