@@ -116,3 +116,109 @@ return (
 
 ## 静的なバージョン
 - 静的なバージョンを作るときはstateを使わない
+
+## フラグメント
+コンポーネントが複数の要素を返す場合 フラグメントでまとめる
+- 複数の要素をグループ化
+
+```
+import React, { Fragment } from 'react';
+
+function ListItem({ item }) {
+  return (
+    <Fragment>
+      <dt>{item.term}</dt>
+      <dd>{item.description}</dd>
+    </Fragment>
+  );
+}
+
+function Glossary(props) {
+  return (
+    <dl>
+      {props.items.map(item => (
+        <ListItem item={item} key={item.id} />
+      ))}
+    </dl>
+  );
+}
+```
+
+省略記法
+
+```
+function ListItem({ item }) {
+  return (
+    <>
+      <dt>{item.term}</dt>
+      <dd>{item.description}</dd>
+    </>
+  );
+}
+```
+
+## コード分割
+- 1つのファイルにまとまる
+- exportを書く
+
+```
+// app.js
+import { add } from './math.js';
+
+console.log(add(16, 26)); // 42
+```
+
+```
+// math.js
+export function add(a, b) {
+  return a + b;
+}
+```
+
+### 遅延import
+- default にする
+- Suspenseで読み込むまでのローディング表示してくれる
+
+```
+// todo.js
+export default Todo;
+
+// index.js
+const Todo = React.lazy(() => import('./todo'));
+ReactDOM.render(
+  <React.Suspense fallback={<div>Loading...</div>}>
+    <Todo />
+  </React.Suspense>,
+  document.getElementById('root')
+);
+```
+
+## コンテクスト
+
+```
+const TodoTitle = React.createContext("");
+
+// 親
+    return (
+      <TodoTitle.Provider value={this.props.title}>
+        <div>
+          <ul>
+            {listItems}
+          </ul>
+          <ItemInput onClick={this.addItem} />
+        </div>
+      </TodoTitle.Provider>
+    );
+
+// 子
+class TodoItem extends React.Component {
+  static contextType = TodoTitle;
+}
+// 値を参照するとき
+this.context
+
+// 関数コンポーネントの場合
+<TodoTitle.Consumer>
+  {title => (…)}
+</TodoTitle.Consumer>
+```
