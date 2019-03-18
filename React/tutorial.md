@@ -222,3 +222,11 @@ this.context
   {title => (…)}
 </TodoTitle.Consumer>
 ```
+
+## 高階 (Higher-Order) コンポーネント
+- コンポーネントを返す関数
+- 意事項
+https://ja.reactjs.org/docs/higher-order-components.html#caveats  
+
+## 長いリストの仮想化 
+react-window と react-virtualized
