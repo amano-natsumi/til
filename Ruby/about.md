@@ -54,3 +54,20 @@ decrypted_data << dec.final
 p decrypted_data
 
 ```
+
+
+## Faraday でクライアント証明書 を使用する
+
+```ruby
+f = Faraday.new(url: "https://example.bom") do |faraday|
+    faraday.request :url_encoded
+    faraday.adapter Faraday.default_adapter
+end
+
+p12 = OpenSSL::PKCS12.new(File.read(Rails.root.join('.key', 'test.p12')), 'password')
+connection = f
+connection.ssl.client_cert = p12.certificate
+connection.ssl.client_key = p12.key
+
+response = connection.get
+```
