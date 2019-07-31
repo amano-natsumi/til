@@ -28,3 +28,8 @@ error
 found
 success/ok
 ```
+
+
+## API 設計
+- Microsoft REST API Guidelines(https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
+- Google API 設計ガイド(https://cloud.google.com/apis/design/)
