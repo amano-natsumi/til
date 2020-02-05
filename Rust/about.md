@@ -16,6 +16,8 @@ build + run
 
 ```
 cargo run
+buildのみ
+cargo build
 ```
 
 リリース用build
