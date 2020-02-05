@@ -26,6 +26,11 @@ cargo build
 cargo build --release
 ```
 
+プロジェクト作成
+```
+cargo new hello_world --bin
+```
+
 ## Cargo.toml
 
 ```
