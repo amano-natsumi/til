@@ -29,3 +29,12 @@ System.out.println(json);
     private lateinit var environment: Environment
 environment.activeProfiles
 ```
+
+```
+    @Test
+    public void aaa() {
+        byte[] key = new byte[32];
+        new Random().nextBytes(key);
+        System.out.println(new String(Hex.encodeHex(key)));
+    }
+```
