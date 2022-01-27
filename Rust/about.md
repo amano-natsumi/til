@@ -10,12 +10,15 @@
 ├── src
 │   └── main.rs
 └── target
+    ├─ {build file}
 ```
 
+
+
+```
 build + run
-
-```
 cargo run
+
 buildのみ
 cargo build
 ```
