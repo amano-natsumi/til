@@ -43,15 +43,15 @@ def test_func():
 ```
 import string
 import secrets
-symbol = '.-=!'
-alphabet = string.ascii_letters + string.digits + symbol
-while True:
-    password = ''.join(secrets.choice(alphabet) for i in range(10))
-    if (any(c.islower() for c in password)
-            and any(c.isupper() for c in password)
-            and sum(c.isdigit() for c in password) >= 3
-            and any(c in symbol for c in password)):
-        break
+alphabet = string.ascii_letters + string.digits
+def make_pw(length):
+    while True:
+        password = ''.join(secrets.choice(alphabet) for i in range(length))
+        if (any(c.islower() for c in password)
+                and any(c.isupper() for c in password)
+                and sum(c.isdigit() for c in password) >= 3):
+            break
+    return password
 
-print(password)
+print(make_pw(10))
 ```
